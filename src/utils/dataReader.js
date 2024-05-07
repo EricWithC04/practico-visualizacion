@@ -33,3 +33,19 @@ export const mostRepeatedChannels = () => {
     
     return mostVideosChannels
 }
+
+export const mostRepeatedCategories = () => {
+    const completeData = dataReader()
+    const categoriesVideos = {}
+
+    completeData.forEach(video => {
+        if (video.category !== undefined) { 
+                categoriesVideos.hasOwnProperty(video.category) ?
+                categoriesVideos[video.category]++ :
+                categoriesVideos[video.category] = 1
+            }
+        }
+    )
+
+    return categoriesVideos
+}

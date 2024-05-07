@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { dataReader, mostRepeatedChannels } from './utils/dataReader'
+import { dataReader, mostRepeatedChannels, mostRepeatedCategories } from './utils/dataReader'
 import './App.css'
 import { VictoryBar, VictoryChart, VictoryAxis } from 'victory'
 
