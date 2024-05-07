@@ -23,12 +23,10 @@ export const mostRepeatedChannels = () => {
         }
     )
 
-    const mostVideosChannels = []
+    const mostVideosChannels = {}
     Object.keys(channelsVideos).forEach(c => {
         if (channelsVideos[c] > 12) {
-            mostVideosChannels.push({
-                [c]: channelsVideos[c],
-            })
+            mostVideosChannels[c] = channelsVideos[c]
         }
     })
     
