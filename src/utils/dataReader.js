@@ -75,5 +75,32 @@ export const higherAVGlikes = () => {
 
     const higherValues = obtainHigherValuesObject(10, AVGs)
 
-    console.log(higherValues);
+    return higherValues
+}
+
+export const higherAVGdisLikes = () => {
+    const completeData = dataReader()
+    const channelsVideos = {}
+
+    completeData.forEach(video => {
+        if (channelsVideos.hasOwnProperty(video.channel_title)) {
+            channelsVideos[video.channel_title].dislikes += video.dislikes
+            channelsVideos[video.channel_title].videos++
+        } else {
+            channelsVideos[video.channel_title] = {
+                dislikes: video.dislikes,
+                videos: 1
+            }
+        }
+    })
+
+    const AVGs = {}
+
+    Object.keys(channelsVideos).forEach(c => {
+        AVGs[c] = Math.floor(channelsVideos[c].dislikes / channelsVideos[c].videos)
+    })
+
+    const higherValues = obtainHigherValuesObject(10, AVGs)
+
+    return higherValues
 }
