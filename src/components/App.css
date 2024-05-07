@@ -6,11 +6,19 @@
 }
 
 .sub-container {
-  flex: 1 1 300px; /* Cada subcontenedor debería intentar ocupar al menos 300px */
+  flex: 1 1 45%; /* Modificación para asegurar que cada subcontenedor sea más grande */
+  min-width: 350px; /* Asegura un tamaño mínimo más adecuado para la visualización */
   margin: 10px;
   padding: 20px;
   border: 1px solid #ccc;
   box-shadow: 0px 0px 10px #ccc;
   border-radius: 8px;
   background-color: #f9f9f9;
+}
+
+/* Específicos para likes y dislikes para mayor visibilidad */
+.sub-container-like,
+.sub-container-dislike {
+  flex: 2 1 90%; /* Aumenta la proporción y el mínimo de flex para estos contenedores */
+  min-width: 600px; /* Aumenta el tamaño mínimo para mejorar la visualización */
 }
