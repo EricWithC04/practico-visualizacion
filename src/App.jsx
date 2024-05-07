@@ -9,7 +9,7 @@ import {
   higherAVGdisLikes } from './utils/dataReader'
 import "./components/App.css"
 // Importar los datos de un archivo separado idealmente
-import { pieData1, pieData2, barData1, barData2 } from './data';
+import { pieData2, barData1, barData2 } from './data';
 
 function App() {
 
@@ -107,7 +107,7 @@ function App() {
             <h1>Dashboard</h1>
             <div className="chart-container">
                 <div className="sub-container">
-                    <PieChart data={pieData1} />
+                <BarChart data={dataChannels.hasOwnProperty("labels") ? dataChannels : barData2} />
                 </div>
                 <div className="sub-container">
                     <PieChart data={dataCategories.hasOwnProperty("labels") ? dataCategories : pieData2} />
