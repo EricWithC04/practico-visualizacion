@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { dataReader, mostRepeatedChannels, mostRepeatedCategories } from './utils/dataReader'
+import { dataReader, mostRepeatedChannels, mostRepeatedCategories, higherAVGlikes } from './utils/dataReader'
 import './App.css'
 
 function App() {

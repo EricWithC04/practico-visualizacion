@@ -1,5 +1,6 @@
 import { data } from "../data/data.js"
 import { categories } from "../data/categories.js"
+import { obtainHigherValues, obtainHigherValuesObject } from "./obtainHigherValues.js"
 
 export const dataReader = () => {
     const formatedData = data.map(item => {
@@ -48,4 +49,31 @@ export const mostRepeatedCategories = () => {
     )
 
     return categoriesVideos
+}
+
+export const higherAVGlikes = () => {
+    const completeData = dataReader()
+    const channelsVideos = {}
+
+    completeData.forEach(video => {
+        if (channelsVideos.hasOwnProperty(video.channel_title)) {
+            channelsVideos[video.channel_title].likes += video.likes
+            channelsVideos[video.channel_title].videos++
+        } else {
+            channelsVideos[video.channel_title] = {
+                likes: video.likes,
+                videos: 1
+            }
+        }
+    })
+
+    const AVGs = {}
+
+    Object.keys(channelsVideos).forEach(c => {
+        AVGs[c] = Math.floor(channelsVideos[c].likes / channelsVideos[c].videos)
+    })
+
+    const higherValues = obtainHigherValuesObject(10, AVGs)
+
+    console.log(higherValues);
 }
