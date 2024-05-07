@@ -8,5 +8,28 @@ export const dataReader = () => {
             ...item
         }
     })
-    console.log(formatedData[0]);
+    return formatedData
+}
+
+export const mostRepeatedChannels = () => {
+    const completeData = dataReader()
+    const channelsVideos = {}
+
+    completeData.forEach(video => {
+            channelsVideos.hasOwnProperty(video.channel_title) ?
+            channelsVideos[video.channel_title]++ :
+            channelsVideos[video.channel_title] = 1
+        }
+    )
+
+    const mostVideosChannels = []
+    Object.keys(channelsVideos).forEach(c => {
+        if (channelsVideos[c] > 12) {
+            mostVideosChannels.push({
+                [c]: channelsVideos[c],
+            })
+        }
+    })
+    
+    return mostVideosChannels
 }
