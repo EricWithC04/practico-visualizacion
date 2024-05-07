@@ -82,24 +82,24 @@ function App() {
   }, [])
 
   useEffect(() => {
-    const channels = mostRepeatedChannels()
-    const labels = Object.keys(channels)
-    const data = Object.values(channels)
+    const dislikes = higherAVGdisLikes()
+    const labels = Object.keys(dislikes)
+    const data = Object.values(dislikes)
 
     const completeData = {
       labels: labels,
       datasets: [
           {
-              label: 'Canales con más videos',
+              label: 'Canales con mayor promedio de dislikes',
               data: data,
-              backgroundColor: 'rgba(255, 99, 132, 0.6)',
-              borderColor: 'rgba(255, 99, 132, 1)',
+              // backgroundColor: 'rgba(255, 99, 132, 0.6)',
+              // borderColor: 'rgba(255, 99, 132, 1)',
               borderWidth: 1,
           },
       ],
     }
 
-    setDataChannels(completeData)
+    setDataDislikes(completeData)
   }, [])
 
     return (
@@ -107,7 +107,7 @@ function App() {
             <h1>Dashboard</h1>
             <div className="chart-container">
                 <div className="sub-container">
-                <BarChart data={dataChannels.hasOwnProperty("labels") ? dataChannels : barData2} />
+                <BarChart data={dataDislikes.hasOwnProperty("labels") ? dataDislikes : barData2} />
                 </div>
                 <div className="sub-container">
                     <PieChart data={dataCategories.hasOwnProperty("labels") ? dataCategories : pieData2} />
