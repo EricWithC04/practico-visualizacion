@@ -9,18 +9,21 @@ export const obtainHigherValues = (amount, array) => {
 }
 
 export const obtainHigherValuesObject = (amount, object) => {
-    const aValues = Object.values(object);
+    let aValues = Object.values(object);
     
     aValues.sort((a, b) => b - a);
     
-    const maxValue = aValues[0];
-    
-    const keysMaxValue = Object.keys(object).filter(key => object[key] === maxValue);
-    
     const higherObjects = {};
-    keysMaxValue.slice(0, amount).forEach(key => {
-        higherObjects[key] = maxValue;
-    });
+    aValues = aValues.slice(0, amount)
     
+    aValues.forEach(v => {
+        Object.keys(object).forEach(key => {
+            if (object[key] === v) {
+                higherObjects[key] = v;
+                return
+            }
+        })
+    })
+
     return higherObjects;
 }
