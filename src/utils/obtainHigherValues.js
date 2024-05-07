@@ -7,3 +7,20 @@ export const obtainHigherValues = (amount, array) => {
     
     return higherObjects.slice(0, amount);
 }
+
+export const obtainHigherValuesObject = (amount, object) => {
+    const aValues = Object.values(object);
+    
+    aValues.sort((a, b) => b - a);
+    
+    const maxValue = aValues[0];
+    
+    const keysMaxValue = Object.keys(object).filter(key => object[key] === maxValue);
+    
+    const higherObjects = {};
+    keysMaxValue.slice(0, amount).forEach(key => {
+        higherObjects[key] = maxValue;
+    });
+    
+    return higherObjects;
+}
